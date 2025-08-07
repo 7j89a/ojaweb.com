@@ -1,0 +1,269 @@
+/* General Section Styling */
+.courses-v2-section {
+    padding: 60px 0;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: 'Cairo', sans-serif;
+    overflow: hidden;
+    transition: background-color 0.4s, color 0.4s;
+}
+
+.courses-v2-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header Styling */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    /* Removed animation for performance */
+    /* animation: fadeInDown 1s ease-out; */
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px var(--color-accent);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Subject Category Styling */
+.subject-category-wrapper {
+    margin-bottom: 60px;
+    /* Removed animation for performance */
+    /* animation: fadeInUp 1s ease-out; */
+}
+
+.category-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+}
+
+.subject-category-wrapper, .course-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.subject-category-wrapper.is-visible, .course-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Courses Grid Layout */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Course Card Styling */
+.course-card {
+    background: var(--color-surface-1);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-glass-border);
+    /* Removed transition for performance */
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s; */
+    z-index: 1;
+}
+
+.course-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 0%, var(--glow-color), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    transform: translateY(-50%);
+}
+
+html[data-theme='light'] .course-card::before {
+    opacity: 0; /* Hide glow in light mode for a cleaner look */
+}
+
+.course-card:hover {
+    /* Removed hover transform and shadow for performance */
+    /* transform: translateY(-10px); */
+    /* box-shadow: var(--shadow-primary); */
+}
+
+.course-card:hover::before {
+    opacity: 0.3;
+}
+
+html[data-theme='light'] .course-card:hover {
+    border-color: var(--glow-color);
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--glow-color);
+    text-shadow: 0 0 20px var(--glow-color);
+    transition: color 0.4s;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 25px;
+    min-height: 40px;
+}
+
+.card-button {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #fff;
+    background: var(--glow-color);
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme='light'] .card-button {
+    color: var(--glow-color);
+    background: transparent;
+    border-color: var(--glow-color);
+}
+
+.card-button:hover {
+    background-color: transparent;
+    color: var(--glow-color);
+    border-color: var(--glow-color);
+    transform: scale(1.05);
+}
+
+html[data-theme='light'] .card-button:hover {
+    background-color: var(--glow-color);
+    color: #fff;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===============================================
+   Subject-Specific Color Variables
+   =============================================== */
+
+/* Dark Theme Colors */
+:root {
+    --subject-اللغة-الإنجليزية-color: #4a90e2;
+    --subject-اللغة-العربية-color: #50e3c2;
+    --subject-التربية-الإسلامية-color: #b8e986;
+    --subject-تاريخ-الأردن-color: #f5a623;
+    --subject-كيمياء-color: #f8b7d3;
+    --subject-أحياء-color: #9dffb0;
+    --subject-فيزياء-color: #a7d2ff;
+    --subject-علوم-أرض-color: #d0a7ff;
+    --subject-رياضيات-color: #ffcda7;
+    --subject-إنجليزي-متقدم-color: #a7ffeb;
+    --subject-عربي-تخصص-color: #e3a7ff;
+    --subject-رياضات-أعمال-color: #ffbda7;
+    --subject-تربية-إسلامية-تخصص-color: #a7ffc3;
+    --subject-ثقافة-مالية-color: #ffdda7;
+    --subject-علم-اجتماع-color: #ff9a8b;
+    --subject-نفس-وفلسفة-color: #f6d365;
+    --subject-التاريخ-والجغرافيا-color: #fda085;
+    --subject-دين-تخصص-color: #fbc2eb;
+}
+
+/* Light Theme Colors (more saturated, less neon) */
+html[data-theme='light'] {
+    --subject-اللغة-الإنجليزية-color: #357ABD;
+    --subject-اللغة-العربية-color: #3EAF9B;
+    --subject-التربية-الإسلامية-color: #8BC34A;
+    --subject-تاريخ-الأردن-color: #E69100;
+    --subject-كيمياء-color: #E91E63;
+    --subject-أحياء-color: #4CAF50;
+    --subject-فيزياء-color: #2196F3;
+    --subject-علوم-أرض-color: #9C27B0;
+    --subject-رياضيات-color: #FF9800;
+    --subject-إنجليزي-متقدم-color: #009688;
+    --subject-عربي-تخصص-color: #673AB7;
+    --subject-رياضات-أعمال-color: #FF5722;
+    --subject-تربية-إسلامية-تخصص-color: #009688;
+    --subject-ثقافة-مالية-color: #FFC107;
+    --subject-علم-اجتماع-color: #F44336;
+    --subject-نفس-وفلسفة-color: #FFEB3B;
+    --subject-التاريخ-والجغرافيا-color: #795548;
+    --subject-دين-تخصص-color: #9C27B0;
+}
+
+/* Assigning colors to cards */
+.subject-اللغة-الإنجليزية { --glow-color: var(--subject-اللغة-الإنجليزية-color); }
+.subject-اللغة-العربية { --glow-color: var(--subject-اللغة-العربية-color); }
+.subject-التربية-الإسلامية { --glow-color: var(--subject-التربية-الإسلامية-color); }
+.subject-تاريخ-الأردن { --glow-color: var(--subject-تاريخ-الأردن-color); }
+.subject-كيمياء { --glow-color: var(--subject-كيمياء-color); }
+.subject-أحياء { --glow-color: var(--subject-أحياء-color); }
+.subject-فيزياء { --glow-color: var(--subject-فيزياء-color); }
+.subject-علوم-أرض { --glow-color: var(--subject-علوم-أرض-color); }
+.subject-رياضيات { --glow-color: var(--subject-رياضيات-color); }
+.subject-إنجليزي-متقدم { --glow-color: var(--subject-إنجليزي-متقدم-color); }
+.subject-عربي-تخصص { --glow-color: var(--subject-عربي-تخصص-color); }
+.subject-رياضات-أعمال { --glow-color: var(--subject-رياضات-أعمال-color); }
+.subject-تربية-إسلامية-تخصص { --glow-color: var(--subject-تربية-إسلامية-تخصص-color); }
+.subject-ثقافة-مالية { --glow-color: var(--subject-ثقافة-مالية-color); }
+.subject-علم-اجتماع { --glow-color: var(--subject-علم-اجتماع-color); }
+.subject-نفس-وفلسفة { --glow-color: var(--subject-نفس-وفلسفة-color); }
+.subject-التاريخ-والجغرافيا { --glow-color: var(--subject-التاريخ-والجغرافيا-color); }
+.subject-دين-تخصص { --glow-color: var(--subject-دين-تخصص-color); }
